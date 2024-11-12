@@ -1,5 +1,5 @@
 package lk.ijse.green_shadow_backend.dto;
-import lk.ijse.green_shadow_backend.entity.UserRole;
+import lk.ijse.green_shadow_backend.entity.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package lk.ijse.green_shadow_backend.dto;
-import lk.ijse.green_shadow_backend.entity.EquipmentStatus;
-import lk.ijse.green_shadow_backend.entity.EquipmentType;
+import lk.ijse.green_shadow_backend.entity.enums.EquipmentStatus;
+import lk.ijse.green_shadow_backend.entity.enums.EquipmentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

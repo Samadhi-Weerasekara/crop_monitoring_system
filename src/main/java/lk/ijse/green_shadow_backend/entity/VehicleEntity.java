@@ -1,4 +1,4 @@
 package lk.ijse.green_shadow_backend.entity;
 
-public class VehicleEntity {
+public class VehicleEntity implements SuperEntity{
 }

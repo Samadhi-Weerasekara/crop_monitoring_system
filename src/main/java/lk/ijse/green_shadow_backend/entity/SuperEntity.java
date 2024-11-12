@@ -1,4 +1,6 @@
 package lk.ijse.green_shadow_backend.entity;
 
-public interface SuperEntity {
+import java.io.Serializable;
+
+public interface SuperEntity extends Serializable {
 }

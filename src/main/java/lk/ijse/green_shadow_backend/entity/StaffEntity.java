@@ -1,4 +1,4 @@
 package lk.ijse.green_shadow_backend.entity;
 
-public class StaffEntity {
+public class StaffEntity implements SuperEntity{
 }

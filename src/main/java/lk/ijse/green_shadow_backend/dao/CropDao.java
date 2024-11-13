@@ -1,4 +1,9 @@
 package lk.ijse.green_shadow_backend.dao;
 
-public interface CropDao {
+import lk.ijse.green_shadow_backend.entity.CropEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CropDao extends JpaRepository<CropEntity,String> {
 }

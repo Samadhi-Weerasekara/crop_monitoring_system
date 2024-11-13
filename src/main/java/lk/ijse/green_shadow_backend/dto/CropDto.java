@@ -13,12 +13,12 @@ import java.util.List;
 @Data
 
 public class CropDto implements SuperDto, CropResponse {
-    private String crop_code;
-    private String crop_comman_name;
-    private String crop_scientific_name;
-    private String crop_image;
+    private String cropCode;
+    private String commonName;
+    private String scientificName;
+    private String cropImage;
     private String category;
-    private String crop_season;
-    private List<FieldDto> fieldDtos=new ArrayList<>();
+    private String cropSeason;
+//    private List<FieldDto> fieldDtos=new ArrayList<>();
 
 }

@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Entity
+@Table(name = "crops")
 public class CropEntity  implements SuperEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "crop_code", nullable = false, unique = true)
     private String cropCode;  // Unique identifier for the crop
 
     @Column(nullable = false)

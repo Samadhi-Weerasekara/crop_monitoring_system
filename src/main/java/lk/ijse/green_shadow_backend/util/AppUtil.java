@@ -7,10 +7,12 @@ import java.util.UUID;
 
 public class AppUtil {
     public static String createStaffId(){return "STAFF-"+ UUID.randomUUID();}
-    public static String toBase64ProfilePic(MultipartFile profilePic){
+    public static String createCropId(){return "CROP-"+ UUID.randomUUID();}
+
+    public static String toBase64ProfilePic(MultipartFile picture){
         String proPicBase64 = null;
         try {
-            byte [] proPicBytes = profilePic.getBytes();
+            byte [] proPicBytes = picture.getBytes();
             proPicBase64 =  Base64.getEncoder().encodeToString(proPicBytes);
         }catch (Exception e){
             e.printStackTrace();

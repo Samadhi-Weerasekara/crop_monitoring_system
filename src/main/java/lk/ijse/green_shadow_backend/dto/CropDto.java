@@ -1,5 +1,6 @@
 package lk.ijse.green_shadow_backend.dto;
 
+import lk.ijse.green_shadow_backend.customeobj.CropResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 
-public class CropDto implements SuperDto{
+public class CropDto implements SuperDto, CropResponse {
     private String crop_code;
     private String crop_comman_name;
     private String crop_scientific_name;

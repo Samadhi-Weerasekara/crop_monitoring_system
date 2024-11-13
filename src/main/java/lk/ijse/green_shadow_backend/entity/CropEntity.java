@@ -12,10 +12,7 @@ import lombok.NoArgsConstructor;
 public class CropEntity  implements SuperEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Unique identifier for the crop
-
-    @Column(nullable = false, unique = true)
-    private String cropCode;  // Unique code for each crop (e.g., a prefix can be added)
+    private String cropCode;  // Unique identifier for the crop
 
     @Column(nullable = false)
     private String commonName;  // Common name of the crop
@@ -33,7 +30,5 @@ public class CropEntity  implements SuperEntity{
     @Column(nullable = false)
     private String cropSeason;  // Season of the crop (e.g., Summer, Winter)
 
-    @ManyToOne
-    @JoinColumn(name = "field_id", nullable = false)
-    private FieldEntity field;  // Field details associated with the crop
+
 }

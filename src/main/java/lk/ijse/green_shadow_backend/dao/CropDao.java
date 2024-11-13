@@ -1,4 +1,4 @@
 package lk.ijse.green_shadow_backend.dao;
 
-public class CropDao {
+public interface CropDao {
 }

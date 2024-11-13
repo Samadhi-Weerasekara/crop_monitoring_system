@@ -1,15 +1,18 @@
 package lk.ijse.green_shadow_backend.embedded;
-
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+@Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Embeddable
-public class NameIdentifier {
-    private String firstName;
-    private String lastName;
+
+public class Address {
+    private String line1;
+    private String line2;
+    private String line3;
+    private String line4;
+    private String line5;
+
 }

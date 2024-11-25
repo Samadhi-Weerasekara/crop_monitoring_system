@@ -1,8 +1,10 @@
 package lk.ijse.green_shadow_backend.util;
 
 import lk.ijse.green_shadow_backend.dto.CropDto;
+import lk.ijse.green_shadow_backend.dto.FieldDto;
 import lk.ijse.green_shadow_backend.dto.StaffDto;
 import lk.ijse.green_shadow_backend.entity.CropEntity;
+import lk.ijse.green_shadow_backend.entity.FieldEntity;
 import lk.ijse.green_shadow_backend.entity.StaffEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -40,5 +42,18 @@ public class Mapping {
 
     public List<CropDto> convertCropEntityToDTO(List<CropEntity> cropEntities) {
         return modelMapper.map(cropEntities, new TypeToken<List<CropDto>>() {}.getType());
+    }
+
+    //matters of fieldEntity and DTO
+    public FieldDto convertToDto(FieldEntity field){
+        return modelMapper.map(field,FieldDto.class);
+    }
+
+    public FieldEntity converToEntity(FieldDto fieldDto){
+        return modelMapper.map(fieldDto,FieldEntity.class);
+    }
+
+    public List<FieldDto> convertFieldEntityToDTO(List<FieldEntity> fieldEntities) {
+        return modelMapper.map(fieldEntities, new TypeToken<List<FieldDto>>() {}.getType());
     }
 }

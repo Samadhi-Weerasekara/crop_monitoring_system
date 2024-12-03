@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +25,7 @@ public class StaffDto implements SuperDto, StaffResponse {
     private String contactNo; // Mobile number to contact
     private String email; // Email to contact
     private Enums.Role role; // Role of the member as ENUM
-//    private List<FieldDto> fields = new ArrayList<>(); // List of allocated fields, or empty if N/A
-//    private List<VehicleDto> vehicles = new ArrayList<>(); // List of allocated vehicles, or empty if N/A
+
+    private List<Long> assignedFieldIds; // IDs of assigned fields
+    private List<Long> logIds;
 }

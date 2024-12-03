@@ -17,16 +17,16 @@ public class VehicleEntity implements SuperEntity{
     @Id
     private String vehicleCode;
 
-    @Column(nullable = false)
+
     private String licensePlateNumber;
 
-    @Column(nullable = false)
+
     private String vehicleCategory;
 
-    @Column(nullable = false)
+
     private String fuelType;
 
-    @Column(nullable = false)
+
     private String status;
 
     private String remarks;

@@ -6,31 +6,38 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name = "logs")
-public class MonitoringLogDetailsEntity implements SuperEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Unique identifier for the log entry
+public class MonitoringLogDetailsEntity implements SuperEntity {
 
-    @Column(nullable = false, unique = true)
+    @Id
     private String logCode;  // Unique code for each log (e.g., a prefix can be added)
 
-    @Column(nullable = false)
+
     @Temporal(TemporalType.DATE)
     private Date logDate;  // Date of the log
 
-    @Column(nullable = false)
+
     private String logDetails;  // Observation or details of the log
 
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String observedImage;  // Image or description of the observed status (could be a URL or base64 string)
 
+    @ManyToOne
+    @JoinColumn(name = "field_id")
+    private FieldEntity field;
+
+    @ManyToOne
+    @JoinColumn(name = "crop_id")
+    private CropEntity crop;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private StaffEntity staff;
 
 }

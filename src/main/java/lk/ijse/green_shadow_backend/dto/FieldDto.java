@@ -21,6 +21,10 @@ public class FieldDto  implements SuperDto, FieldResponse {
     private String fieldImage1;
     private String fieldImage2;
 
+    private List<Long> cropIds;
+    private List<Long> assignedStaffIds;
+    private List<Long> logIds;
+
 
 
 

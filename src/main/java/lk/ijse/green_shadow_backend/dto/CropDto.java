@@ -19,6 +19,8 @@ public class CropDto implements SuperDto, CropResponse {
     private String cropImage;
     private String category;
     private String cropSeason;
-//    private List<FieldDto> fieldDtos=new ArrayList<>();
+
+    private Long fieldId; // ID of the field where the crop is located
+    private List<Long> logIds; // IDs of related logs
 
 }

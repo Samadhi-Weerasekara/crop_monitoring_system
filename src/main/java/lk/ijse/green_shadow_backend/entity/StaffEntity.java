@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 
 import java.util.Date;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,61 +18,60 @@ import java.util.Date;
 
 public class StaffEntity implements SuperEntity{
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id",  unique = true)
     private String id;
 
     // Staff member's first name
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
     // Staff member's last name
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
     // Staff member's designation (e.g., Manager, Developer)
     @Enumerated(EnumType.STRING)
-    @Column(name = "designation", nullable = false)
+    @Column(name = "designation")
     private Enums.Designation designation;
 
     // Staff member's gender (Male, Female, Other)
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private Enums.Gender gender;
 
     // Date when the staff member joined
     @Temporal(TemporalType.DATE)
-    @Column(name = "joined_date", nullable = false)
+    @Column(name = "joined_date")
     private Date joinedDate;
 
     // Date of birth of the staff member
     @Temporal(TemporalType.DATE)
-    @Column(name = "dob", nullable = false)
+    @Column(name = "dob")
     private Date dob;
 
     // Address details of the staff member
     @Embedded
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private Address address;
 
     // Contact number for the staff member
-    @Column(name = "contact_no", nullable = false)
+    @Column(name = "contact_no")
     private String contactNo;
 
     // Email address for the staff member
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
     // Role of the staff member (e.g., Admin, User)
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     private Enums.Role role;
 
-    // List of fields allocated to the staff member (use String to represent list or customize as needed)
-//    @Column(name = "field_list")
-//    private String fieldList; // "N/A" if none
-//
-//    // List of vehicles allocated to the staff member (use String to represent list or customize as needed)
-//    @Column(name = "vehicle_list")
-//    private String vehicleList; // "N/A" if none
+
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+    private List<StaffEntity> fieldAssignments;
+
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+    private List<MonitoringLogDetailsEntity> logs;
 
 }

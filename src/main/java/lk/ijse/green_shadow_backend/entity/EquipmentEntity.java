@@ -1,15 +1,14 @@
 package lk.ijse.green_shadow_backend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lk.ijse.green_shadow_backend.dto.FieldDto;
 import lk.ijse.green_shadow_backend.dto.StaffDto;
 import lk.ijse.green_shadow_backend.enums.Enums;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,16 +19,17 @@ public class EquipmentEntity implements SuperEntity{
     @Id
     private String equipmentId;
 
-    @Column(nullable = false)
+
     private String name;
 
-    @Column(nullable = false)
+
     private Enums.EquipmentType type;
 
-    @Column(nullable = false)
+
     private Enums.EquipmentStatus status;
 
+    @ManyToMany(mappedBy = "equipment")
+    private List<FieldEntity> fields;
 
-//    private StaffDto assignedStaff;
-//    private FieldDto assignedField;
+
 }

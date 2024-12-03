@@ -85,7 +85,7 @@ public class FieldController {
     public ResponseEntity<Void> updateField(
             @PathVariable ("fieldCode") String fieldCode,
             @RequestParam("updateFieldName") String updateFieldName,
-            @RequestParam ("updateFieldLocation") String updateFieldLocationWKT,
+            @RequestParam ("updateFieldLocation") String updateFieldLocation,
             @RequestParam ("updateExtentSize") Double updateExtentSize,
             @RequestParam ("updateFieldImage1") MultipartFile updateFieldImage1,
             @RequestParam ("updateFieldImage2") MultipartFile updateFieldImage2
@@ -98,7 +98,7 @@ public class FieldController {
             var updateField = new FieldDto();
             updateField.setFieldCode(fieldCode);
             updateField.setFieldName(updateFieldName);
-            updateField.setFieldLocation(updateFieldLocationWKT);
+            updateField.setFieldLocation(updateFieldLocation);
             updateField.setExtentSize(updateExtentSize);
             updateField.setFieldImage1(updateFieldImage1Base64);
             updateField.setFieldImage2(updateFieldImage2Base64);

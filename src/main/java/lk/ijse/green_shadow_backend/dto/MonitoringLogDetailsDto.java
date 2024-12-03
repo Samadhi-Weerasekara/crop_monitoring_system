@@ -17,7 +17,9 @@ public class MonitoringLogDetailsDto  implements SuperDto, MonitorLogResponse {
     private Date logDate; // Date of the log
     private String logDetails; // Observation details of the log
     private String observedImage; // Image of the observed status (base64 string or path)
-    private List<FieldDto> fields = new ArrayList<>(); // List of relevant fields for log monitoring
-    private List<CropDto> crops = new ArrayList<>(); // List of relevant crops for log monitoring
-    private List<StaffDto> staff = new ArrayList<>(); // List of relevant staff members for log monitoring
+
+    // Relationship fields
+    private Long fieldId; // ID of the field the log is related to
+    private Long cropId;  // ID of the crop the log is related to
+    private Long staffId; // ID of the staff who logged this
 }

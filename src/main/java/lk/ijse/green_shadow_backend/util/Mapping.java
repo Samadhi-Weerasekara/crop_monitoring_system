@@ -66,16 +66,30 @@ public class Mapping {
         return modelMapper.map(vehicleEntities, new TypeToken<List<VehicleDto>>() {}.getType());
     }
 
-    //matters of vehicleEntity and DTO
-    public EquipmentDto convertToDto(EquipmentEntity equipment){
+    //matters of equipEntity and DTO
+    public EquipmentDto convertEquipmentToDto(EquipmentEntity equipment){
         return modelMapper.map(equipment,EquipmentDto.class);
     }
 
-    public EquipmentEntity converToEntity(EquipmentDto equipmentDto){
+    public EquipmentEntity convertEquipDtoToEntity(EquipmentDto equipmentDto){
         return modelMapper.map(equipmentDto,EquipmentEntity.class);
     }
 
     public List<EquipmentDto> convertEquipmentEntityToDTO(List<EquipmentEntity> equipmentEntities) {
         return modelMapper.map(equipmentEntities, new TypeToken<List<EquipmentDto>>() {}.getType());
+    }
+
+
+    //matters of monitorlogEntity and DTO
+    public MonitoringLogDetailsDto convertLogsToDto(MonitoringLogDetailsEntity monitoringLogDetailsEntity){
+        return modelMapper.map(monitoringLogDetailsEntity,MonitoringLogDetailsDto.class);
+    }
+
+    public MonitoringLogDetailsEntity convertLogDtoToEntity(MonitoringLogDetailsDto monitoringLogDetailsDto){
+        return modelMapper.map(monitoringLogDetailsDto,MonitoringLogDetailsEntity.class);
+    }
+
+    public List<MonitoringLogDetailsDto> convertLogsEntityToDTO(List<MonitoringLogDetailsEntity> monitoringLogDetailsEntityList) {
+        return modelMapper.map(monitoringLogDetailsEntityList, new TypeToken<List<MonitoringLogDetailsDto>>() {}.getType());
     }
 }

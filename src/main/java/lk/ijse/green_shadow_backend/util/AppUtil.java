@@ -18,7 +18,7 @@ public class AppUtil {
 
     public static String createEquipmentId(){return "EQUIPMENT-"+ UUID.randomUUID();}
 
-
+    public static String createLogId(){return "LOGS-"+ UUID.randomUUID();}
 
 
 

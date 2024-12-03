@@ -1,11 +1,7 @@
 package lk.ijse.green_shadow_backend.util;
 
-import lk.ijse.green_shadow_backend.dto.CropDto;
-import lk.ijse.green_shadow_backend.dto.FieldDto;
-import lk.ijse.green_shadow_backend.dto.StaffDto;
-import lk.ijse.green_shadow_backend.entity.CropEntity;
-import lk.ijse.green_shadow_backend.entity.FieldEntity;
-import lk.ijse.green_shadow_backend.entity.StaffEntity;
+import lk.ijse.green_shadow_backend.dto.*;
+import lk.ijse.green_shadow_backend.entity.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +51,31 @@ public class Mapping {
 
     public List<FieldDto> convertFieldEntityToDTO(List<FieldEntity> fieldEntities) {
         return modelMapper.map(fieldEntities, new TypeToken<List<FieldDto>>() {}.getType());
+    }
+
+    //matters of vehicleEntity and DTO
+    public VehicleDto convertToDto(VehicleEntity vehicle){
+        return modelMapper.map(vehicle,VehicleDto.class);
+    }
+
+    public VehicleEntity converToEntity(VehicleDto vehicleDto){
+        return modelMapper.map(vehicleDto,VehicleEntity.class);
+    }
+
+    public List<VehicleDto> convertVehicleEntityToDTO(List<VehicleEntity> vehicleEntities) {
+        return modelMapper.map(vehicleEntities, new TypeToken<List<VehicleDto>>() {}.getType());
+    }
+
+    //matters of vehicleEntity and DTO
+    public EquipmentDto convertToDto(EquipmentEntity equipment){
+        return modelMapper.map(equipment,EquipmentDto.class);
+    }
+
+    public EquipmentEntity converToEntity(EquipmentDto equipmentDto){
+        return modelMapper.map(equipmentDto,EquipmentEntity.class);
+    }
+
+    public List<EquipmentDto> convertEquipmentEntityToDTO(List<EquipmentEntity> equipmentEntities) {
+        return modelMapper.map(equipmentEntities, new TypeToken<List<EquipmentDto>>() {}.getType());
     }
 }

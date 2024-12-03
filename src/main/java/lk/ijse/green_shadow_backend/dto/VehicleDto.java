@@ -15,6 +15,5 @@ public class VehicleDto  implements SuperDto , VehicleResponse {
     private String vehicleCategory; // Type of vehicle (e.g., Van, Truck, etc.)
     private String fuelType; // Type of fuel used by the vehicle (e.g., Diesel, Petrol)
     private String status; // Status of the vehicle (e.g., Available, Out of service)
-    private List<StaffDto> allocatedStaff = List.of(); // Assigned driver and assistant (if any)
     private String remarks; // Any special remark or "N/A" if none
 }

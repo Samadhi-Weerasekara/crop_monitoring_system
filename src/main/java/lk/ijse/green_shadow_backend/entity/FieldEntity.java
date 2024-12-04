@@ -37,11 +37,13 @@ public class FieldEntity implements SuperEntity{
     @OneToMany(mappedBy = "field", cascade = CascadeType.ALL)
     private List<CropEntity> crops;
 
-    @OneToMany(mappedBy = "field", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "field")
     private List<StaffEntity> staffAssignments;
 
     @OneToMany(mappedBy = "field", cascade = CascadeType.ALL)
     private List<MonitoringLogDetailsEntity> logs;
+
+
 
 
 

@@ -28,4 +28,5 @@ public class StaffDto implements SuperDto, StaffResponse {
 
     private List<Long> assignedFieldIds; // IDs of assigned fields
     private List<Long> logIds;
+    private List<Long> vehicleIds; // IDs of assigned vehicles
 }

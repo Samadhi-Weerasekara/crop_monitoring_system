@@ -67,11 +67,14 @@ public class StaffEntity implements SuperEntity{
     @Column(name = "role")
     private Enums.Role role;
 
-
-    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
-    private List<StaffEntity> fieldAssignments;
+    @ManyToOne
+    @JoinColumn(name = "field_id") // or whatever column name you are using
+    private FieldEntity field;
 
     @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
     private List<MonitoringLogDetailsEntity> logs;
+
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+    private List<VehicleEntity> vehicles;
 
 }

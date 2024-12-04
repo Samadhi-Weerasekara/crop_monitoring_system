@@ -28,8 +28,14 @@ public class EquipmentEntity implements SuperEntity{
 
     private Enums.EquipmentStatus status;
 
-    @ManyToMany(mappedBy = "equipment")
-    private List<FieldEntity> fields;
+    @ManyToOne
+    @JoinColumn(name = "field_id")
+    private FieldEntity field;
+
+    @ManyToOne
+    @JoinColumn(name = "staff_id")
+    private StaffEntity staff;
+
 
 
 }

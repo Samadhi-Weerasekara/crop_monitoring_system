@@ -16,4 +16,5 @@ public class EquipmentDto  implements SuperDto, EquipmentResponse {
     private Enums.EquipmentType type;
     private Enums.EquipmentStatus status;
     private List<Long> fieldIds; // IDs of fields using this equipment
+    private List<Long> staffIds; // Staff members who are using this equipment
 }

@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+
 public class JWTServiceIMPL implements JWTService {
     @Value("${token.key}")
     private String jwtKey;

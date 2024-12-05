@@ -1,6 +1,6 @@
-<p align="center" color="Green">
-  # Green Shadow (Pvt) Ltd. Agricultural Management System - Backend
-</p>
+<h1 align="center" color="Green">
+  Green Shadow (Pvt) Ltd. Agricultural Management System - Backend
+</h1>
 
 
 ## Description

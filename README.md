@@ -82,10 +82,10 @@ Refer to the [ Postman API Documentation](https://documenter.getpostman.com/view
 
 ## License
 
-This project is licensed under the MIT License - see the [ MIT License](https://github.com/Samadhi-Weerasekara/2nd-sem-final-frontend) file for details.
+This project is licensed under the MIT License - see the [ MIT License](https://github.com/Samadhi-Weerasekara/crop_monitoring_system) file for details.
 
 <p align="center">
-  &copy; 2024 Nimashi Dewanmini
+  &copy; 2024 Samadhi Weerasekara
 </p>
 
 

@@ -1,6 +1,5 @@
 
- <img src="assests\Green__1_-removebg-preview.png" width="200" height="200" />
-# Green Shadow (Pvt) Ltd. Agricultural Management System - Backend
+### Green Shadow (Pvt) Ltd. Agricultural Management System - Backend
 
 ## Description
 

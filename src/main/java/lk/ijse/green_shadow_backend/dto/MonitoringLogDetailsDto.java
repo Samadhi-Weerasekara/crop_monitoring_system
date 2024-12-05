@@ -19,7 +19,7 @@ public class MonitoringLogDetailsDto  implements SuperDto, MonitorLogResponse {
     private String observedImage; // Image of the observed status (base64 string or path)
 
     // Relationship fields
-    private Long fieldId; // ID of the field the log is related to
-    private Long cropId;  // ID of the crop the log is related to
-    private Long staffId; // ID of the staff who logged this
+    private String fieldId; // ID of the field the log is related to
+    private String cropId;  // ID of the crop the log is related to
+    private String staffId; // ID of the staff who logged this
 }

@@ -16,4 +16,5 @@ public class VehicleDto  implements SuperDto , VehicleResponse {
     private String fuelType; // Type of fuel used by the vehicle (e.g., Diesel, Petrol)
     private String status; // Status of the vehicle (e.g., Available, Out of service)
     private String remarks; // Any special remark or "N/A" if none
+    private String staffId; // Include staffId if needed
 }

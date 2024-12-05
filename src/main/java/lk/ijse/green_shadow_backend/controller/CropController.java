@@ -7,6 +7,8 @@ import lk.ijse.green_shadow_backend.exception.DataPersistFailedException;
 import lk.ijse.green_shadow_backend.service.CropService;
 import lk.ijse.green_shadow_backend.util.AppUtil;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,8 @@ import java.util.List;
 public class CropController {
     @Autowired
     private final CropService cropService;
+
+    private static final Logger logger = LoggerFactory.getLogger(CropController.class);
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> saveCrop(
@@ -47,6 +51,7 @@ public class CropController {
             buildCropDTO.setCropSeason(cropSeason);
             //send to the service layer
             cropService .saveCrop(buildCropDTO);
+            logger.info("Crop saved successfully");
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistFailedException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -58,6 +63,7 @@ public class CropController {
     public ResponseEntity<Void> deleteCrop(@PathVariable ("cropCode") String cropCode) {
         try {
             cropService.deleteCrop(cropCode);
+            logger.info("Crop deleted successfully");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (CropNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -71,6 +77,7 @@ public class CropController {
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CropDto> getAllCrops(){
+        logger.info("Crops found successfully");
         return cropService.getAllCrops();
     }
     @PatchMapping(value = "/{cropCode}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -92,10 +99,13 @@ public class CropController {
             updatedCrop.setCategory(updatedCategory);
             updatedCrop.setCropSeason(updatedCropSeason);
             cropService.updateCrop(updatedCrop);
+            logger.info("Crop updated successfully with code: {}", cropCode);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (CropNotFoundException e){
+            logger.error("Crop update failed - Crop with code {} not found", cropCode);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }catch (Exception e){
+            logger.error("Crop update failed - Internal server error");
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

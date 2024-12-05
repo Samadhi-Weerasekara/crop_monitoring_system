@@ -22,10 +22,10 @@ public class EquipmentEntity implements SuperEntity{
 
     private String name;
 
-
+    @Enumerated(EnumType.STRING)
     private Enums.EquipmentType type;
 
-
+    @Enumerated(EnumType.STRING)
     private Enums.EquipmentStatus status;
 
     @ManyToOne

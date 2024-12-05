@@ -1,4 +1,4 @@
-package lk.ijse.green_shadow_backend.service;
+package lk.ijse.green_shadow_backend.service.impl;
 
 import jakarta.transaction.Transactional;
 import lk.ijse.green_shadow_backend.customeobj.MonitorLogErrorResponse;
@@ -8,6 +8,7 @@ import lk.ijse.green_shadow_backend.dto.MonitoringLogDetailsDto;
 import lk.ijse.green_shadow_backend.entity.MonitoringLogDetailsEntity;
 import lk.ijse.green_shadow_backend.exception.DataPersistFailedException;
 import lk.ijse.green_shadow_backend.exception.MonitorLogNotFoundException;
+import lk.ijse.green_shadow_backend.service.MonitorLogDetailsService;
 import lk.ijse.green_shadow_backend.util.AppUtil;
 import lk.ijse.green_shadow_backend.util.Mapping;
 import lombok.RequiredArgsConstructor;

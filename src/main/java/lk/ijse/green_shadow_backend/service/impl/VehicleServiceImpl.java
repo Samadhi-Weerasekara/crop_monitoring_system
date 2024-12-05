@@ -1,4 +1,4 @@
-package lk.ijse.green_shadow_backend.service;
+package lk.ijse.green_shadow_backend.service.impl;
 
 import jakarta.transaction.Transactional;
 import lk.ijse.green_shadow_backend.customeobj.VehicleResponse;
@@ -8,6 +8,7 @@ import lk.ijse.green_shadow_backend.dto.VehicleDto;
 import lk.ijse.green_shadow_backend.entity.VehicleEntity;
 import lk.ijse.green_shadow_backend.exception.DataPersistFailedException;
 import lk.ijse.green_shadow_backend.exception.VehicleNotFoundException;
+import lk.ijse.green_shadow_backend.service.VehicleService;
 import lk.ijse.green_shadow_backend.util.AppUtil;
 import lk.ijse.green_shadow_backend.util.Mapping;
 import lombok.RequiredArgsConstructor;

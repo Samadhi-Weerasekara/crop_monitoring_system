@@ -6,8 +6,9 @@ import lk.ijse.green_shadow_backend.exception.DataPersistFailedException;
 import lk.ijse.green_shadow_backend.exception.FieldNotFoundException;
 import lk.ijse.green_shadow_backend.service.FieldService;
 import lk.ijse.green_shadow_backend.util.AppUtil;
-import lombok.RequiredArgsConstructor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,18 +20,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/fields")
-@RequiredArgsConstructor
+@CrossOrigin
 public class FieldController {
-@Autowired
-    private final FieldService fieldService;
+    @Autowired
+    FieldService fieldService;
+
+    private static final Logger logger = LoggerFactory.getLogger(FieldController.class);
+
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> saveField(
             @RequestParam("fieldName") String fieldName,
-            @RequestParam ("fieldLocation") String fieldLocation,
-            @RequestParam ("extentSize") Double extentSize,
-            @RequestParam ("fieldImage1") MultipartFile fieldImage1,
-            @RequestParam ("fieldImage2") MultipartFile fieldImage2) {
+            @RequestParam("fieldLocation") String fieldLocation,
+            @RequestParam("extentSize") Double extentSize,
+            @RequestParam("fieldImage1") MultipartFile fieldImage1,
+            @RequestParam("fieldImage2") MultipartFile fieldImage2) {
 
         try {
 
@@ -53,43 +57,55 @@ public class FieldController {
 
             //send to the service layer
             fieldService.saveField(buildFieldDto);
+            logger.info("Field created successfully");
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch (DataPersistFailedException e){
+        } catch (DataPersistFailedException e) {
+            logger.error("Failed to create field");
             System.err.println("Invalid WKT for fieldLocation: " + e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
+        } catch (Exception e) {
+            logger.info("Failed to create field");
             System.err.println("Unexpected error: " + e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @DeleteMapping("/{fieldCode}")
-    public ResponseEntity<Void> deleteUser(@PathVariable ("fieldCode") String fieldCode) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("fieldCode") String fieldCode) {
         try {
             fieldService.deleteField(fieldCode);
+            logger.info("Field deleted successfully");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (FieldNotFoundException e) {
+            logger.info("Field not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
+            logger.info("Failed to delete field");
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping(value = "/{fieldCode}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public FieldResponse getSelectedField(@PathVariable ("fieldCode") String fieldCode){
+
+    @GetMapping(value = "/{fieldCode}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public FieldResponse getSelectedField(@PathVariable("fieldCode") String fieldCode) {
+        logger.info("Selected field fetched successfully");
         return fieldService.getSelectedField(fieldCode);
     }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<FieldDto> getAllFields(){
+    public List<FieldDto> getAllFields() {
+        logger.info("All fields fetched successfully");
         return fieldService.getAllFields();
     }
-    @PatchMapping(value = "/{fieldCode}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+
+    @PatchMapping(value = "/{fieldCode}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> updateField(
-            @PathVariable ("fieldCode") String fieldCode,
+            @PathVariable("fieldCode") String fieldCode,
             @RequestParam("updateFieldName") String updateFieldName,
-            @RequestParam ("updateFieldLocation") String updateFieldLocation,
-            @RequestParam ("updateExtentSize") Double updateExtentSize,
-            @RequestParam ("updateFieldImage1") MultipartFile updateFieldImage1,
-            @RequestParam ("updateFieldImage2") MultipartFile updateFieldImage2
-    ){
+            @RequestParam("updateFieldLocation") String updateFieldLocation,
+            @RequestParam("updateExtentSize") Double updateExtentSize,
+            @RequestParam("updateFieldImage1") MultipartFile updateFieldImage1,
+            @RequestParam("updateFieldImage2") MultipartFile updateFieldImage2
+    ) {
         try {
 
             String updateFieldImage1Base64 = AppUtil.toBase64ProfilePic(updateFieldImage1);
@@ -103,10 +119,13 @@ public class FieldController {
             updateField.setFieldImage1(updateFieldImage1Base64);
             updateField.setFieldImage2(updateFieldImage2Base64);
             fieldService.updateField(updateField);
+            logger.info("Field updated successfully");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }catch (FieldNotFoundException e){
+        } catch (FieldNotFoundException e) {
+            logger.info("Field not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }catch (Exception e){
+        } catch (Exception e) {
+            logger.info("Failed to update field");
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -1,4 +1,4 @@
-package lk.ijse.green_shadow_backend.service;
+package lk.ijse.green_shadow_backend.service.impl;
 
 import jakarta.transaction.Transactional;
 import lk.ijse.green_shadow_backend.customeobj.EquipmentErrorResponse;
@@ -7,9 +7,12 @@ import lk.ijse.green_shadow_backend.customeobj.VehicleErrorResponse;
 import lk.ijse.green_shadow_backend.dao.EquipmentDao;
 import lk.ijse.green_shadow_backend.dto.EquipmentDto;
 import lk.ijse.green_shadow_backend.entity.EquipmentEntity;
+import lk.ijse.green_shadow_backend.entity.FieldEntity;
+import lk.ijse.green_shadow_backend.entity.StaffEntity;
 import lk.ijse.green_shadow_backend.entity.VehicleEntity;
 import lk.ijse.green_shadow_backend.exception.DataPersistFailedException;
 import lk.ijse.green_shadow_backend.exception.EquipmentNotFoundException;
+import lk.ijse.green_shadow_backend.service.EquipmentService;
 import lk.ijse.green_shadow_backend.util.AppUtil;
 import lk.ijse.green_shadow_backend.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -52,6 +52,9 @@ public class JWTServiceIMPL implements JWTService {
         extractClaims.put("role", userDetails.getAuthorities());
         Date now = new Date();
         Date expire = new Date(now.getTime() + 1000 * 600);
+        expire = new Date(expire.getTime() + 1000 * 60 * 30);
+
+//        Date expire = new Date(now.getTime() + 1000 * 60);
 
         return Jwts.builder()
                 .setClaims(extractClaims)

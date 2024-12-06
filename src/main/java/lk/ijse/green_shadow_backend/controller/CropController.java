@@ -24,13 +24,18 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/crops")
 @RequiredArgsConstructor
-@CrossOrigin
+
 public class CropController {
     @Autowired
     private final CropService cropService;
 
     private static final Logger logger = LoggerFactory.getLogger(CropController.class);
-
+    @CrossOrigin(
+            origins = "http://127.0.0.1:5500",
+            allowCredentials = "true",
+            allowedHeaders = "*",
+            methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}
+    )
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> saveCrop(
             @RequestPart("commonName") String commonName,
@@ -71,6 +76,7 @@ public class CropController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping(value = "/{cropCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CropResponse getSelectedCrop(@PathVariable ("cropCode") String cropCode){
         return cropService.getSelectedCrop(cropCode);
@@ -80,24 +86,24 @@ public class CropController {
         logger.info("Crops found successfully");
         return cropService.getAllCrops();
     }
-    @PatchMapping(value = "/{cropCode}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping (value = "/{cropCode}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> updateCrop(
             @PathVariable ("cropCode") String cropCode,
-            @RequestPart("updatedCommonName") String updatedCommonName,
-            @RequestPart ("updatedScientificName") String updatedScientificName,
-            @RequestPart ("updatedCropImage") MultipartFile updatedCropImage,
-            @RequestPart ("updatedCategory") String updatedCategory,
-            @RequestPart ("updatedCropSeason") String updatedCropSeason)
+            @RequestPart("commonName") String commonName,
+            @RequestPart ("scientificName") String scientificName,
+            @RequestPart ("cropImage") MultipartFile cropImage,
+            @RequestPart ("category") String category,
+            @RequestPart ("cropSeason") String cropSeason)
     {
         try {
-            String updateBase64ProfilePic = AppUtil.toBase64ProfilePic(updatedCropImage);
+            String updateBase64ProfilePic = AppUtil.toBase64ProfilePic(cropImage);
             var updatedCrop = new CropDto();
             updatedCrop.setCropCode(cropCode);
-            updatedCrop.setCommonName(updatedCommonName);
-            updatedCrop.setScientificName(updatedScientificName);
+            updatedCrop.setCommonName(commonName);
+            updatedCrop.setScientificName(scientificName);
             updatedCrop.setCropImage(updateBase64ProfilePic);
-            updatedCrop.setCategory(updatedCategory);
-            updatedCrop.setCropSeason(updatedCropSeason);
+            updatedCrop.setCategory(category);
+            updatedCrop.setCropSeason(cropSeason);
             cropService.updateCrop(updatedCrop);
             logger.info("Crop updated successfully with code: {}", cropCode);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
